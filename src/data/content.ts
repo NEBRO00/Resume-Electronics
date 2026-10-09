@@ -283,7 +283,7 @@ export const links = {
   email: 'ne0002545@gmail.com',
   phone: '062-234-5413',
   line: 'nezama111',
-  github: 'https://github.com/NEBRO00/Reesume_kanpasut',
+  github: 'https://github.com/NEBRO00/Resume-Electronics',
   // Drop your resume PDF into /public as "resume.pdf" and the Download
   // Resume button will pick it up automatically — no code change needed.
   resumeUrl: '/resume.pdf',
