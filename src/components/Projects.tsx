@@ -49,35 +49,41 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
             <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <dt className="font-kanit text-xs uppercase tracking-wide text-steel">Role</dt>
+                <dt className="font-kanit text-xs uppercase tracking-wide text-steel">{t.projects.roleLabel}</dt>
                 <dd className="mt-1 font-kanit text-sm text-fog/80">{project.role[lang]}</dd>
               </div>
               <div>
-                <dt className="font-kanit text-xs uppercase tracking-wide text-steel">Result</dt>
+                <dt className="font-kanit text-xs uppercase tracking-wide text-steel">{t.projects.resultLabel}</dt>
                 <dd className="mt-1 font-kanit text-sm text-fog/80">{project.result[lang]}</dd>
               </div>
             </dl>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 rounded-full border border-fog/25 px-5 py-2.5 font-kanit text-sm text-fog transition-colors hover:border-fog/60"
-              >
-                {t.projects.liveProject}
-                <ArrowUpRight size={14} />
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 rounded-full border border-fog/25 px-5 py-2.5 font-kanit text-sm text-fog transition-colors hover:border-fog/60"
-              >
-                <Code2 size={14} />
-                {t.projects.viewCode}
-              </a>
-            </div>
+            {(project.liveUrl !== '#' || project.githubUrl !== '#') && (
+              <div className="mt-7 flex flex-wrap gap-3">
+                {project.liveUrl !== '#' && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 rounded-full border border-fog/25 px-5 py-2.5 font-kanit text-sm text-fog transition-colors hover:border-fog/60"
+                  >
+                    {t.projects.liveProject}
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
+                {project.githubUrl !== '#' && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 rounded-full border border-fog/25 px-5 py-2.5 font-kanit text-sm text-fog transition-colors hover:border-fog/60"
+                  >
+                    <Code2 size={14} />
+                    {t.projects.viewCode}
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </motion.div>
@@ -87,6 +93,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function Projects() {
   const { t } = useLanguage()
+  const engineeringProjects = projects.filter((project) => project.category === 'engineering')
+  const additionalProjects = projects.filter((project) => project.category === 'additional')
 
   return (
     <section id="projects" className="relative overflow-hidden bg-ink py-24 sm:py-32">
@@ -111,10 +119,27 @@ export default function Projects() {
           {t.projects.heading}
         </motion.h2>
 
-        <div className="flex flex-col gap-24 sm:gap-32">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
+        <div className="flex flex-col gap-20 sm:gap-28">
+          <div>
+            <h3 className="mb-8 font-kanit text-2xl font-bold text-fog sm:text-3xl">
+              {t.projects.engineeringGroup}
+            </h3>
+            <div className="flex flex-col gap-24 sm:gap-32">
+              {engineeringProjects.map((project, i) => (
+                <ProjectCard key={project.id} project={project} index={i} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="mb-8 font-kanit text-2xl font-bold text-fog sm:text-3xl">
+              {t.projects.additionalGroup}
+            </h3>
+            <div className="flex flex-col gap-24 sm:gap-32">
+              {additionalProjects.map((project, i) => (
+                <ProjectCard key={project.id} project={project} index={i} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ export default {
       colors: {
         ink: '#0C0C0C',
         panel: '#141414',
-        paper: '#EDE7DD',
+        paper: '#E8EDF1',
         fog: '#D7E2EA',
         steel: '#646973',
         mist: '#BBCCD7',

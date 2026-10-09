@@ -66,6 +66,9 @@ export default function Experience() {
               <div>
                 <h4 className="font-kanit text-lg font-semibold sm:text-xl">{item.school[lang]}</h4>
                 <p className="mt-1 font-kanit text-sm text-ink/60">{item.field[lang]}</p>
+                {item.period[lang] && (
+                  <p className="mt-2 font-kanit text-sm text-ink/50">{item.period[lang]}</p>
+                )}
               </div>
             </motion.div>
           ))}

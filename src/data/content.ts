@@ -12,6 +12,7 @@ export interface MediaSlot {
 export interface Project {
   id: string
   order: string
+  category: 'engineering' | 'additional'
   type: { th: string; en: string }
   title: { th: string; en: string }
   description: { th: string; en: string }
@@ -48,8 +49,96 @@ export const projects: Project[] = [
   // liveUrl / githubUrl are left as '#' on purpose — fill in your real
   // deployed link and repo link for each project once you have them.
   {
-    id: 'hayday',
+    id: 'delta-arm-ai-edge',
     order: '01',
+    category: 'engineering',
+    type: { th: 'โปรเจกต์มหาวิทยาลัย', en: 'University Project' },
+    title: { th: 'Delta Arm 3 แกน: ระบบตรวจจับวัตถุด้วย Computer Vision', en: '3-Axis Delta Arm: Computer Vision Object Detection' },
+    description: {
+      th: 'ออกแบบแขนกล Delta Arm 3 แกนและวงจรควบคุม พร้อมระบบตรวจจับวัตถุด้วยกล้องบน Raspberry Pi 5 โดยใช้ Python และ OpenCV ทดสอบเบื้องต้นหยิบวัตถุได้ 8–10 จาก 10 ชิ้นต่อรอบ ขึ้นกับสภาพแสง โดยแสงภายนอกยังส่งผลต่อความแม่นยำ',
+      en: 'Designed a 3-axis Delta Arm and its control circuit, with camera-based object detection on Raspberry Pi 5 using Python and OpenCV. In initial trials, the arm picked 8–10 of 10 objects per run depending on lighting; uncontrolled ambient light remained a limitation.',
+    },
+    role: { th: 'ออกแบบโครงสร้างแขนกลและวงจร ทดสอบการเคลื่อนที่ด้วย ESP32 และทดสอบระบบร่วมกับ PLC', en: 'Designed the arm structure and circuit; tested motion with ESP32 and evaluated the system with a PLC.' },
+    technologies: ['SolidWorks', 'Raspberry Pi 5', 'ESP32', 'Python', 'OpenCV', 'PLC', 'Stepper Motor Control'],
+    challenge: {
+      th: 'การหยิบวัตถุได้รับผลกระทบจากความแม่นยำของการเคลื่อนที่และสภาพแสงที่เปลี่ยนแปลง โดยเฉพาะแสงภายนอกที่ควบคุมได้ยาก',
+      en: 'Picking reliability depended on motion accuracy and changing lighting conditions, especially ambient light that was difficult to control.',
+    },
+    result: {
+      th: 'สาธิตการตรวจจับและหยิบวัตถุได้ในการทดสอบเบื้องต้น พร้อมระบุข้อจำกัดด้านแสงเพื่อใช้ปรับปรุงระบบต่อ',
+      en: 'Demonstrated object detection and picking in initial trials, and identified lighting variation as a key area for further improvement.',
+    },
+    liveUrl: '#',
+    githubUrl: 'https://github.com/NEBRO00/Delta-Arm-AI-Edge',
+    media: [
+      { src: '/projects/delta-arm-1.jpg', fallbackColor: '#8B7CF6' },
+      { src: '/projects/delta-arm-2.jpg', fallbackColor: '#5B8DEF' },
+      { src: '/projects/delta-arm-3.jpg', fallbackColor: '#F2748C' },
+      { src: '/projects/delta-arm-4.jpg', fallbackColor: '#F2A25C' },
+    ],
+  },
+  {
+    id: 'automatic-air-leak-testing-system',
+    order: '02',
+    category: 'engineering',
+    type: { th: 'โปรเจกต์สหกิจศึกษา', en: 'Co-op Project' },
+    title: { th: 'โครงการสหกิจศึกษา: Automatic Air Leak Testing System Using PLC', en: 'Co-op Project: Automatic Air Leak Testing System Using PLC' },
+    description: {
+      th: 'ร่วมประกอบระบบทดสอบการรั่วของอากาศสำหรับเครื่อง Air Leak Test โดยใช้ PLC Mitsubishi FX5S ออกแบบการเดินสายและประกอบชิ้นงานจริงร่วมกับ Production Engineer',
+      en: 'Collaborated on an automatic air-leak testing system using a Mitsubishi FX5S PLC. Worked with a production engineer on wiring design and physical assembly.',
+    },
+    role: { th: 'ร่างโปรแกรม PLC เบื้องต้น ออกแบบการเดินสาย และประกอบชิ้นงานจริงร่วมกับ Production Engineer อีก 1 คน โดยโปรแกรมฉบับต่อเนื่องพัฒนาโดยพี่เลี้ยง', en: 'Drafted the initial PLC logic, designed wiring, and assembled the unit with a production engineer; the engineer continued the PLC program.' },
+    technologies: ['Mitsubishi FX5S', 'PLC Ladder Logic', 'Wiring Design', 'Machine Assembly', 'Air Leak Testing'],
+    challenge: {
+      th: 'ต้องปรับปรุงกระบวนการทดสอบให้มีความแม่นยำและรวดเร็วขึ้น พร้อมทั้งลดความผิดพลาดจากการตรวจสอบด้วยมือในสภาพแวดล้อมโรงงานจริง',
+      en: 'Improving the testing process to be faster and more accurate while reducing errors caused by manual inspection in a real factory environment.',
+    },
+    result: {
+      th: 'ประกอบชิ้นงานและจัดทำแนวทางการเดินสายจนแล้วเสร็จ พร้อมประสบการณ์ทำงานร่วมกันระหว่างงานไฟฟ้าและงานผลิต',
+      en: 'Completed the physical assembly and wiring layout, gaining hands-on experience across electrical work and production collaboration.',
+    },
+    liveUrl: '/Presentation.pdf',
+    githubUrl: '#',
+    media: [
+      { src: '/projects/air-leak-system-1.jpg', fallbackColor: '#5B8DEF' },
+      { src: '/projects/air-leak-system-2.jpg', fallbackColor: '#8B7CF6' },
+      { src: '/projects/air-leak-system-3.jpg', fallbackColor: '#F2A25C' },
+      { src: '/projects/air-leak-system-4.jpg', fallbackColor: '#F2748C' },
+    ],
+  },
+  {
+    id: 'embedded-system-mini-project',
+    order: '03',
+    category: 'engineering',
+    type: { th: 'โปรเจกต์รายวิชา', en: 'Mini Project' },
+    title: { th: 'โปรเจกต์รายวิชา Embedded System', en: 'Embedded System Mini Project' },
+    description: {
+      th: 'ทำโปรเจกต์รายวิชา Embedded System ที่เกี่ยวข้องกับการออกแบบวงจรและระบบฝังตัวเพื่อให้ทำงานตามเงื่อนไขที่อาจารย์กำหนด',
+      en: 'A mini embedded systems project focused on circuit design and a microcontroller-based system that met the course requirements and test conditions.',
+    },
+    role: { th: 'ออกแบบวงจร ออกแบบ PCB และทดสอบระบบให้ทำงานได้ตามข้อกำหนด', en: 'Designed the circuit, created the PCB layout, and validated the system against the project requirements' },
+    technologies: ['Circuit Design', 'Embedded C', 'Microcontroller', 'PCB Fabrication'],
+    challenge: {
+      th: 'ต้องทำให้ระบบฝังตัวทำงานได้อยู่ในช่วงค่าที่กำหนดและมีความน่าเชื่อถือในการทดสอบจริง',
+      en: 'Ensuring the embedded system met the required operating values and behaved reliably during real testing.',
+    },
+    result: {
+      th: 'ผ่านรายวิชาได้ด้วยคะแนนที่ดีและได้ประสบการณ์ตรงด้านการออกแบบระบบฝังตัว',
+      en: 'Completed the course successfully with a strong result and gained hands-on experience in embedded system design.',
+    },
+    liveUrl: '#',
+    githubUrl: 'https://github.com/NEBRO00/Embedded-System-Mini-Project',
+    media: [
+      { src: '/projects/embedded-1.jpg', fallbackColor: '#5B8DEF' },
+      { src: '/projects/embedded-2.jpg', fallbackColor: '#8B7CF6' },
+      { src: '/projects/embedded-3.jpg', fallbackColor: '#F2A25C' },
+      { src: '/projects/embedded-4.jpg', fallbackColor: '#F2748C' },
+    ],
+  },
+  {
+    id: 'hayday',
+    order: '04',
+    category: 'additional',
     type: { th: 'ส่วนตัว', en: 'Personal' },
     title: { th: 'ระบบสั่งซื้อไอเทม Hay Day', en: 'Hay Day Item Ordering System' },
     description: {
@@ -77,7 +166,8 @@ export const projects: Project[] = [
   },
   {
     id: 'portfolio',
-    order: '02',
+    order: '05',
+    category: 'additional',
     type: { th: 'ส่วนตัว', en: 'Personal' },
     title: { th: 'Portfolio เวอร์ชันแรก', en: 'First Portfolio Site' },
     description: {
@@ -105,7 +195,8 @@ export const projects: Project[] = [
   },
   {
     id: 'uxui-freelance',
-    order: '03',
+    order: '06',
+    category: 'additional',
     type: { th: 'ฟรีแลนซ์', en: 'Freelance' },
     title: { th: 'งานออกแบบ UI/UX ฟรีแลนซ์', en: 'Freelance UI/UX Design Work' },
     description: {
@@ -131,100 +222,17 @@ export const projects: Project[] = [
       { src: '/projects/uiux-freelance-4.jpg', fallbackColor: '#F2748C' },
     ],
   },
-  {
-    id: 'delta-arm-ai-edge',
-    order: '04',
-    type: { th: 'โปรเจกต์มหาวิทยาลัย', en: 'University Project' },
-    title: { th: 'งานพัฒนาวิสัยทัศน์ของเครื่องจักรโดยใช้ AI Edge Computing (Delta Arm)', en: 'Machine Vision Development Using AI Edge Computing (Delta Arm)' },
-    description: {
-      th: 'พัฒนาหุ่นยนต์ Delta Arm แบบ 3 แกนเพื่อใช้ประมวลผลภาพแบบเรียลไทม์ด้วย AI Edge Computing ร่วมกับระบบควบคุมการทำงานของเครื่องจักร',
-      en: 'Developed a 3-axis Delta Arm robot for real-time image processing using AI Edge Computing, paired with control logic for machine operation.',
-    },
-    role: { th: 'ออกแบบระบบหุ่นยนต์และพัฒนาการประมวลผลภาพพร้อมบูรณาการกับการทำงานของเครื่องจักร', en: 'Designed the robotic system and developed the vision-processing workflow integrated with machine operation' },
-    technologies: ['SolidWorks', 'AI Edge Computing', 'Python', 'Computer Vision', 'PLC'],
-    challenge: {
-      th: 'ต้องออกแบบหุ่นยนต์ให้มีความแม่นยำในการเคลื่อนที่และทำงานร่วมกับระบบตรวจจับภาพแบบเรียลไทม์ โดยไม่ให้ประสิทธิภาพลดลง',
-      en: 'Balancing precise motion control with real-time image detection so the arm could perform reliably and accurately.',
-    },
-    result: {
-      th: 'โปรเจกต์แล้วเสร็จตามแผนและผ่านการประเมินจากอาจารย์ได้ในระดับที่น่าพอใจ',
-      en: 'Completed the project successfully and received positive evaluation from faculty for its technical execution.',
-    },
-    liveUrl: '#',
-    githubUrl: 'https://github.com/NEBRO00/Delta-Arm-AI-Edge',
-    media: [
-      { src: '/projects/delta-arm-1.jpg', fallbackColor: '#8B7CF6' },
-      { src: '/projects/delta-arm-2.jpg', fallbackColor: '#5B8DEF' },
-      { src: '/projects/delta-arm-3.jpg', fallbackColor: '#F2748C' },
-      { src: '/projects/delta-arm-4.jpg', fallbackColor: '#F2A25C' },
-    ],
-  },
-  {
-    id: 'automatic-air-leak-testing-system',
-    order: '05',
-    type: { th: 'โปรเจกต์วิจัย', en: 'Research Project' },
-    title: { th: 'โครงการสหกิจศึกษา: Automatic Air Leak Testing System Using PLC', en: 'Co-op Project: Automatic Air Leak Testing System Using PLC' },
-    description: {
-      th: 'พัฒนาระบบทดสอบการรั่วของอากาศแบบอัตโนมัติสำหรับเครื่อง Air Leak Test โดยใช้ PLC เพื่อช่วยลดความผิดพลาดจากการตรวจสอบแบบ manual และเพิ่มความแม่นยำในการผลิต',
-      en: 'Developed an automatic air leak testing system for the Air Leak Test machine using PLC to minimize manual inspection errors and improve production accuracy.',
-    },
-    role: { th: 'ผู้ช่วยวิศวกรฝ่ายผลิตและนักพัฒนาระบบอัตโนมัติ รับผิดชอบด้าน PLC, การทดสอบระบบ และการดูแลเครื่องจักรในโรงงาน', en: 'Production engineer assistant and automation developer involved in PLC programming, system testing, and on-site factory machine support' },
-    technologies: ['PLC', 'Automation', 'Air Leak Test', 'Factory Engineering', 'System Testing'],
-    challenge: {
-      th: 'ต้องปรับปรุงกระบวนการทดสอบให้มีความแม่นยำและรวดเร็วขึ้น พร้อมทั้งลดความผิดพลาดจากการตรวจสอบด้วยมือในสภาพแวดล้อมโรงงานจริง',
-      en: 'Improving the testing process to be faster and more accurate while reducing errors caused by manual inspection in a real factory environment.',
-    },
-    result: {
-      th: 'ระบบทำงานได้ตามเป้าหมายและช่วยประยุกต์ใช้เทคโนโลยี PLC ในการยกระดับคุณภาพการผลิตของเครื่อง Air Leak Test',
-      en: 'The system met project goals and demonstrated the practical value of PLC-based automation for improving production quality.',
-    },
-    liveUrl: '/Presentation.pdf',
-    githubUrl: '#',
-    media: [
-      { src: '/projects/air-leak-system-1.jpg', fallbackColor: '#5B8DEF' },
-      { src: '/projects/air-leak-system-2.jpg', fallbackColor: '#8B7CF6' },
-      { src: '/projects/air-leak-system-3.jpg', fallbackColor: '#F2A25C' },
-      { src: '/projects/air-leak-system-4.jpg', fallbackColor: '#F2748C' },
-    ],
-  },
-  {
-    id: 'embedded-system-mini-project',
-    order: '06',
-    type: { th: 'โปรเจกต์รายวิชา', en: 'Mini Project' },
-    title: { th: 'โปรเจกต์รายวิชา Embedded System', en: 'Embedded System Mini Project' },
-    description: {
-      th: 'ทำโปรเจกต์รายวิชา Embedded System ที่เกี่ยวข้องกับการออกแบบวงจรและระบบฝังตัวเพื่อให้ทำงานตามเงื่อนไขที่อาจารย์กำหนด',
-      en: 'A mini embedded systems project focused on circuit design and a microcontroller-based system that met the course requirements and test conditions.',
-    },
-    role: { th: 'ออกแบบวงจร ออกแบบ PCB และทดสอบระบบให้ทำงานได้ตามข้อกำหนด', en: 'Designed the circuit, created the PCB layout, and validated the system against the project requirements' },
-    technologies: ['Circuit Design', 'Embedded C', 'Microcontroller', 'PCB Fabrication'],
-    challenge: {
-      th: 'ต้องทำให้ระบบฝังตัวทำงานได้อยู่ในช่วงค่าที่กำหนดและมีความน่าเชื่อถือในการทดสอบจริง',
-      en: 'Ensuring the embedded system met the required operating values and behaved reliably during real testing.',
-    },
-    result: {
-      th: 'ผ่านรายวิชาได้ด้วยคะแนนที่ดีและได้ประสบการณ์ตรงด้านการออกแบบระบบฝังตัว',
-      en: 'Completed the course successfully with a strong result and gained hands-on experience in embedded system design.',
-    },
-    liveUrl: '#',
-    githubUrl: 'https://github.com/NEBRO00/Embedded-System-Mini-Project',
-    media: [
-      { src: '/projects/embedded-1.jpg', fallbackColor: '#5B8DEF' },
-      { src: '/projects/embedded-2.jpg', fallbackColor: '#8B7CF6' },
-      { src: '/projects/embedded-3.jpg', fallbackColor: '#F2A25C' },
-      { src: '/projects/embedded-4.jpg', fallbackColor: '#F2748C' },
-    ],
-  },
+
 ]
 
 export const experience: ExperienceItem[] = [
   {
     role: { th: 'ผู้ช่วยวิศวกรฝ่ายผลิต (ฝึกงาน)', en: 'Production Engineer Assistant (Internship)' },
     org: { th: 'SEWT-E, นครราชสีมา', en: 'SEWT-E, Nakhon Ratchasima' },
-    period: { th: '4 เดือน', en: '4 months' },
+    period: { th: 'ก.พ.–พ.ค. 2569', en: 'Feb–May 2026' },
     summary: {
-      th: 'ร่วมพัฒนาโครงการปรับปรุงคุณภาพเครื่อง Airleak โดยใช้ PLC พร้อมดูแล ซ่อมบำรุง และสร้างเครื่องจักรในโรงงาน',
-      en: 'Worked on an Airleak-machine quality-improvement project using PLC, plus maintaining, repairing, and building factory machinery.',
+      th: 'ร่วมโครงการปรับปรุงเครื่อง Air Leak โดยใช้ Mitsubishi FX5S PLC ร่างโปรแกรมเบื้องต้น ออกแบบการเดินสาย และประกอบชิ้นงานจริงกับ Production Engineer',
+      en: 'Contributed to an Air Leak machine improvement project using a Mitsubishi FX5S PLC; drafted initial PLC logic, designed wiring, and assembled the unit with a production engineer.',
     },
     outcome: {
       th: 'ได้ประสบการณ์ตรงด้านระบบอัตโนมัติในโรงงานและการแก้ปัญหาหน้างานจริง',
@@ -237,30 +245,35 @@ export const education: EducationItem[] = [
   {
     school: { th: 'มหาวิทยาลัยเทคโนโลยีสุรนารี', en: 'Suranaree University of Technology' },
     field: { th: 'วิศวกรรมอิเล็กทรอนิกส์', en: 'Electronics Engineering' },
-    period: { th: '', en: '' },
+    period: { th: 'จบการศึกษา พ.ศ. 2569', en: 'Graduated 2026' },
   },
 ]
 
 export const skillGroups = [
   {
     number: '01',
-    title: { th: 'Frontend Development', en: 'Frontend Development' },
-    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'],
+    title: { th: 'ออกแบบวงจรและ PCB', en: 'Electronics & PCB Design' },
+    items: ['Circuit Design', 'PCB Design', 'Circuit Testing'],
   },
   {
     number: '02',
-    title: { th: 'UI Styling', en: 'UI Styling' },
-    items: ['Tailwind CSS', 'CSS Animation', 'Responsive Design', 'Framer Motion'],
+    title: { th: 'ระบบฝังตัวและ Computer Vision', en: 'Embedded Systems & Computer Vision' },
+    items: ['ESP32', 'Raspberry Pi 5', 'Arduino IDE', 'C', 'Python', 'OpenCV'],
   },
   {
     number: '03',
-    title: { th: 'Tools & Design', en: 'Tools & Design' },
-    items: ['Figma', 'Git', 'GitHub'],
+    title: { th: 'PLC และระบบอัตโนมัติ', en: 'PLC & Industrial Automation' },
+    items: ['Mitsubishi FX5S', 'PLC Ladder Logic (Basic)', 'Sensors', 'Air Leak Testing'],
   },
   {
     number: '04',
-    title: { th: 'Hardware & Automation', en: 'Hardware & Automation' },
-    items: ['Python', 'PLC', 'Sensor', 'SolidWorks', 'PostgreSQL', 'C Language'],
+    title: { th: 'เครื่องมือทางวิศวกรรม', en: 'Engineering Tools' },
+    items: ['SolidWorks', 'Git', 'GitHub'],
+  },
+  {
+    number: '05',
+    title: { th: 'ทักษะเสริม: Web และ UI/UX', en: 'Additional: Web & UI/UX' },
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS', 'Figma', 'Framer Motion', 'PostgreSQL'],
   },
 ]
 
@@ -329,6 +342,10 @@ export interface PageCopy {
   }
   projects: {
     heading: string
+    engineeringGroup: string
+    additionalGroup: string
+    roleLabel: string
+    resultLabel: string
     liveProject: string
     viewCode: string
   }
@@ -359,8 +376,8 @@ export const content: Record<Lang, PageCopy> = {
     hero: {
       greeting: "HI, I'M",
       name: 'KANPASUT',
-      role: 'Frontend Developer',
-      tagline: 'ออกแบบและพัฒนาเว็บอินเทอร์เฟซที่ชัดเจน เข้าถึงง่าย และพร้อมใช้งานในโลกจริง',
+      role: 'Electronics Engineer',
+      tagline: 'ผลงานด้านวิศวกรรมอิเล็กทรอนิกส์ ครอบคลุมการออกแบบวงจรและ PCB ระบบฝังตัว และระบบอัตโนมัติ พร้อมโปรเจกต์ Web และ UI/UX เป็นผลงานเสริม',
       status: 'Open to Work',
       workPreference: 'Hybrid',
       viewProjects: 'View Projects',
@@ -369,7 +386,7 @@ export const content: Record<Lang, PageCopy> = {
     },
     about: {
       heading: 'About Me',
-      body: 'ผมเน หรือ กานต์พศุตม์ แสงทอง นักพัฒนาเว็บฝั่ง Frontend ที่มีพื้นฐานวิศวกรรมอิเล็กทรอนิกส์ เริ่มต้นจากงานออกแบบ UI/UX ในฐานะฟรีแลนซ์ ก่อนจะลงลึกด้านการเขียนโค้ดอย่างจริงจัง ผมชอบงานที่ต้องคิดทั้งภาพรวมและรายละเอียดเล็ก ๆ ไปพร้อมกัน และเรียนรู้จากการลงมือทำโปรเจกต์จริงเสมอ',
+      body: 'ผมชื่อเน (กานต์พสุตม์ แสงทอง) บัณฑิตวิศวกรรมอิเล็กทรอนิกส์จากมหาวิทยาลัยเทคโนโลยีสุรนารี มีประสบการณ์จากการฝึกงานด้านระบบอัตโนมัติในโรงงาน และโปรเจกต์ออกแบบวงจร ระบบฝังตัว และ Computer Vision สนใจงานที่ได้วิเคราะห์ปัญหา ออกแบบ ทดสอบ และปรับปรุงระบบจากการใช้งานจริง',
       workStatusLabel: 'สถานะการทำงาน',
       locationLabel: 'Location',
       workPrefLabel: 'Work Preference',
@@ -385,10 +402,14 @@ export const content: Record<Lang, PageCopy> = {
     experience: {
       heading: 'Experience',
       educationHeading: 'Education',
-      noExperienceNote: 'ยังไม่มีประสบการณ์ทำงานสายตรง — ด้านล่างคือการฝึกงานและงานฟรีแลนซ์',
+      noExperienceNote: 'ประสบการณ์ด้านวิศวกรรมจากการฝึกงานและโปรเจกต์ลงมือทำจริง',
     },
     projects: {
       heading: 'Projects',
+      engineeringGroup: 'ผลงานด้านวิศวกรรมอิเล็กทรอนิกส์',
+      additionalGroup: 'ผลงานเพิ่มเติม',
+      roleLabel: 'บทบาท',
+      resultLabel: 'ผลลัพธ์',
       liveProject: 'Live Project',
       viewCode: 'GitHub',
     },
@@ -417,8 +438,8 @@ export const content: Record<Lang, PageCopy> = {
     hero: {
       greeting: "HI, I'M",
       name: 'KANPASUT',
-      role: 'Frontend Developer',
-      tagline: 'Designing and developing clear, accessible web interfaces built for real-world use.',
+      role: 'Electronics Engineer',
+      tagline: 'Electronics engineering work in circuit and PCB design, embedded systems, and automation, complemented by web and UI/UX projects.',
       status: 'Open to Work',
       workPreference: 'Hybrid',
       viewProjects: 'View Projects',
@@ -427,7 +448,7 @@ export const content: Record<Lang, PageCopy> = {
     },
     about: {
       heading: 'About Me',
-      body: "I'm Ne (Kanpasut) — a frontend developer with an electronics engineering background. I started out doing freelance UI/UX design before moving deeper into building things myself. I like work that asks for both the big picture and the small details, and I learn best by shipping real projects.",
+      body: "I'm Ne (Kanpasut Sangthong), an Electronics Engineering graduate from Suranaree University of Technology. I have hands-on experience in factory automation through my internship at SEWT-E, alongside projects in circuit design, embedded systems, and computer vision. I enjoy analyzing problems, building practical solutions, and improving systems through testing.",
       workStatusLabel: 'Work Status',
       locationLabel: 'Location',
       workPrefLabel: 'Work Preference',
@@ -443,10 +464,14 @@ export const content: Record<Lang, PageCopy> = {
     experience: {
       heading: 'Experience',
       educationHeading: 'Education',
-      noExperienceNote: "No full-time frontend role yet — here's the internship and freelance work instead.",
+      noExperienceNote: 'Hands-on engineering experience through an internship and practical projects.',
     },
     projects: {
       heading: 'Projects',
+      engineeringGroup: 'Electronics Engineering',
+      additionalGroup: 'Additional Projects',
+      roleLabel: 'Role',
+      resultLabel: 'Outcome',
       liveProject: 'Live Project',
       viewCode: 'GitHub',
     },
